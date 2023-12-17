@@ -1,0 +1,49 @@
+version: "3.1"
+
+intents:
+  - greetings
+  - affirmation
+  - deny
+  - choose_doctor
+
+
+entities:
+  - doctor
+
+slots:
+  doctor:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: doctor
+
+
+responses:
+  utter_default:
+    - text: "Не понял вас :("
+
+  utter_greetings:
+    - text: "Привет! Вас приветствует чат-бот! Вы готовы работать со мной?"
+
+  utter_great:
+    - text: "Отлично!"
+
+  utter_sad:
+    - text: "Понял, позову для вас человека."
+
+  utter_ask_name:
+    - text: "Как вас зовут?"
+
+  utter_goodbye:
+    - text: "До свидания!"
+
+  utter_suggest_doctor:
+    - text: "Выберите врача - терапевт, офтальмолог, травматолог"
+
+  utter_doctor_answer:
+    - text: "Вы записались к {doctor}. Ждите, вам перезвонят!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

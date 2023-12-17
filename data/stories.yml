@@ -1,0 +1,25 @@
+version: "3.1"
+
+stories:
+  - story: default path
+    steps:
+      - intent: greetings
+      - action: utter_greetings
+      - intent: affirmation
+      - action: utter_great
+      - action: utter_suggest_doctor
+      - intent: choose_doctor
+        entities:
+          - doctor: large
+      - slot_was_set:
+          - doctor: large
+      - action: utter_doctor_answer
+      - action: utter_goodbye
+
+  - story: call_human
+    steps:
+      - intent: greetings
+      - action: utter_greetings
+      - intent: deny
+      - action: utter_sad
+      - action: utter_goodbye
